@@ -1,0 +1,255 @@
+\documentclass{report}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\usepackage[francais]{babel} 
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage[francais]{layout}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+
+
+
+\newcommand{\deffinition}{\textcolor[rgb]{0.65,0,0.7}{Définition : }}
+\newcommand{\Def}{\textbf{\deffinition}}
+
+\newcommand{\preuve}{\textcolor[rgb]{0.95,0.25,0}{Preuve : }}
+\newcommand{\Preuve}{\textbf{\preuve}}
+
+\newcommand{\propo}{\textcolor[rgb]{0,0,0.75}{Proposition : }}
+\newcommand{\Propo}{\textbf{\propo}}
+
+\newcommand{\remarque}{\textcolor[rgb]{0,0.65,0.05}{Remarque : }}
+\newcommand{\RQ}{\textbf{\remarque}}
+
+\newcommand{\thm}{\textcolor[rgb]{0,0.4,1}{Théorème : }}
+\newcommand{\THM}{\textbf{\thm}}
+
+\newcommand{\lemme}{\textcolor[rgb]{0,0.2,0.80}{Lemme : }}
+\newcommand{\Lemme}{\textbf{\lemme}}
+
+\newcommand{\coro}{\textcolor[rgb]{0.3,0,0.70}{Corolaire : }}
+\newcommand{\Coro}{\textbf{\coro}}
+
+\newcommand{\vocable}{\textcolor[rgb]{0,0,0.50}{Vocable : }}
+\newcommand{\Vocable}{\textbf{\vocable}}
+
+
+
+
+\title{Théorie des Graphes}
+\author{Lucas Moragues}
+%\date{}
+\begin{document}
+\maketitle
+\renewcommand{\contentsname}{Sommaire}
+\setcounter{tocdepth}{3}
+\tableofcontents
+\chapter{Graphe et combinatoire}
+\setcounter{section}{-1}
+\section{Notion sur les graphes}											%\addcontentsline{toc}{section}{Some Obvious things}
+\Def\\
+Un graphe simple est un couple $G=(V,E)$ avec $V$ l'ensemble des sommets $E$ l'ensemble des arêtes qui sont des paires de sommets distincts\\
+$$E \subseteq \{\{u,v\}|u,v \in V ; u \neq v\}$$
+
+\Vocable\\
+$u$ et $v$ sont les extrémités de l'arête $\{u,v\}$\\
+L'arête $e =\{u,v\}$ est uncidente à $u$ et $v$\\
+Le degré d'un sommet $v$ est le nobmre d'arêtes incidente à $v$\\\\
+
+\textbf{\lemme lemme des poignées de main}\\
+Soit $G=(V,E)$ un graphe simple alors la somme des degrès des sommets de $G$ est deux fois le nombre d'arêtes\\ 
+$$\sum_{v\in V}degre(v)=2|E|$$
+Le degré minimum est noté $\delta(G)$\\
+$$\delta(G)=Min_{v\in V} degre(v)$$
+Le gegré maximum est noté $\Delta(G)$\\
+$$\Delta(G)=Max_{v\in V} degre(v)$$
+
+\section{Cycle chemin et connexité}
+
+Soit $u,v \in V$ un chemin de $u$ à $v$ dans $G=(V,E)$ est une séquence d'arêtes telle que deux arêtes consécutives aient une extrémité commune et tel que la première arête sont incidente à u et la dernière incidente a $v$ $(\{U_0,U_1\},\{U_1,U_2\},...,\{U_{k-1},U_k\})$\\
+
+La distance entre deux sommets $u,v \in V$ est la longueur du plus cours chemin $u$ et $v$ on notera cette valeur $dist(u,v)$\\
+Le diamète d'un graphe, noté $diam(G)$ est la distance entre ses deux sommets les plus éloignés\\
+$$diam(G)=max_{u,v \in V} dist(u,v)$$
+Le rayon d'un graphe est défini par :\\
+$$Rayon(G)= min_{u\in V} max_{v \in V} dist(u,v)$$
+Un angle est un chemin dans les deux extrémités sont identiques\\
+Un graphe est connexe si il existe un chemin entre toute paire de sommet\\\\
+
+\Def\\
+Soit $G=(V,E)$ un graphe et $U \subseteq V$ un sous-ensemble de sommets, le sous-graphe induit par $U$ noté $G_{|U}$ ($G$ restreint à $U$) est le graphe dont les sommets sont $U$ et dont les arêtes sont celles de $E$ dont les extrémités sont dans $U$\\
+$$G_{|U}=(u,\{\{u,v\}|\{u,v\}\in E; u,v \in U\}$$
+Un sous-graphe induit connexe maximal (pour sont support ) est une \textbf{composante} (connexe)\\
+Une \textbf{clique} est un ensemble de sommets qui sont tous adjacents\\
+Deux sommets sont adjacents s'ils sont incidents à une même arête. $u$ et $v$ adjacent si $\{u,v\} \in E$\\
+
+\begin{figure}[h]
+	\centering
+		\includegraphics{descliques}
+	\caption{On note $K_n$ la clique avec $n$ sommets}
+	\label{descliques}
+\end{figure}
+
+Un graphe $G=(V,E)$ est biparti si on peut partitionner $V$ en deux ensemble $A$ et $B$ tel que toute arête de $E$ aient une extrimité dans $A$ et dans $B$\\
+
+\Lemme\\
+si $G=(V,E)$ est connexe, $|E|\geq|V|-1$\\
+
+\Preuve\\
+Soit $v\in V, \forall w \in V\backslash_{\{v\}}$ on note $P_w$ un plus cours chemin de $w$ a $v$ et $e_w$ la première arête de  $P_w$\\\\
+si $w\neq w'$ alors $e_w\neq e_{w'}$\\
+On suppose que cette affirmation est fausse\\
+Soit $w\neq w'$ telque $e_w=e_{w'}$\\
+$$dist(w,v)=1+l'\leq l$$
+$$dist(w',v)1+l\leq l'$$
+
+\Lemme\\
+Soit $G=(V,E)$  un graphe connexe et $e \in E/ G\backslash_{\{e\}}$ est connexe si et seulement si e appartien à un cycle dans $G$\\
+
+\Preuve\\
+$\Rightarrow$\\
+$G\backslash_{\{e\}}$ connexe. Soit $e=\{u,v\}$\\
+il exite un chemin $P$ de $u$ à $v$ dans $G-e$ Donc l'union de $P$ et de $e$ forme un cycle dans $G$ qui passe par $e$\\
+$\Leftarrow$\\
+Soit $C$ un cycle qui contient $e=uv$\\
+il existe un chemin dans $G-e$ entre $u$ et $v$\\
+soit $u',v' \in V$ soit $P$ un chemin de $u'$ à $v'$ dans $G$ si $e\notin P$ alors $u'$ et $v'$ sont connecté dans $G-e$\\
+
+Si $e \in P$ sans perte de généralité on suppoe que $u'$ est connecté a $u$ et $v'$ et connecté a $v$ dans la relation de connexion est transitive donc $u'$ est connecté à $v'$ dans $G-e$\\
+Donc $G-e$ est connexe\\
+
+\begin{figure}[h]
+	\centering
+		\includegraphics{chemins}
+	\caption{On note $P_n$ le chemin de $n$ sommets}
+	\label{chemins}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+		\includegraphics{cycles}
+	\caption{On note $C_n$ le cycle de $n$ sommets}
+	\label{cycles}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+		\includegraphics{graphe_biparti}
+	\caption{On note $K_{n,m}$ le graphe biparti complet avec $n$ sommets d'un coté et $m$ de l'autre}
+	\label{graphe_biparti}
+\end{figure}
+
+\subsection{Complement sur les chemins}
+
+on défini la relation $\sim$ telle que $u \sim v$ si $u$ et $v$ sont connecté par un chemin ,( même un chemin vide $\Rightarrow u \sim v$ )\\
+
+\Propo\\
+$\sim $ est une relation transitive\\
+
+\Preuve\\
+soit $u \sim v$ et $v \sim w$ soit $P$ un chemin de $u$ à $v$, soit $Q$ un chemin de $v$ à $w$ \\
+Soit $s$ le premier sommet visité par $P$ de $u$ à $v$ et $Q$ de $w$ à $v$\\
+on peut donc construir le chemin $R$ avec les arêtes de $P$ qui vont de $u$ à $s$ plus les arêtes de $Q$ qui vont de $s$ à $w$\\
+\newpage
+\Propo\\
+$\sim$ est une relation d'équivalence
+reflexive : $u \sim u$\\
+transitive : $u \sim v \wedge v \sim w\Rightarrow u \sim w$\\
+symérique : $u \sim v\Rightarrow v \sim u$\\
+
+Les classes d'équivalence de $\sim$ sont les composantes (connexe) du graphe\\
+On note c(G) le nombre d conposantes connexes d'un graphe G\\
+
+\section{Graphes minimalement connexes}
+\Def\\
+\begin{itemize}
+	\item un graphe $G=(V,E)$ est minimalement connexe si , $G$ est connexe et pour tout $e \in E,G-e$ n'est plus connexe
+	\item un arbre est un graphe minimalement connexe
+	\item une forêt est un graphe sans cycle\\
+\end{itemize}
+
+\Propo\\
+Pour toute forêt $G=(V,E)$\\
+$$\left|V\right|=\left|E\right|+c(G)$$
+
+\Preuve\\
+On va montrer cette propriété par indection sur le nombre d'arêtes\\
+Soit $G$ un graphe avec $n$ sommets et $m=0$ arêtes alors $c(G) =n \Rightarrow \left|V\right|=\left|E\right|+c(G)$\
+Soit $G$ un graphe avec $n$ sommets et $m\geq1$arêtes acyclique\\
+Soit $u,v \in E$ $u$ et $v$ sont connectés dans $G$ et déconnecté dans $G-e$ car G est acyclique \\
+$c(G) = c(G-e)-1$\\
+
+par induction :\\
+$\left|V\right|=\left|E-e\right|+c(G-e)$\\
+$\left|V\right|=\left|E\right|-1+c(G-e)$\\
+$\left|V\right|=\left|E\right|+c(G)$\\
+
+\Propo\\
+Soit $G=(V,E)$ un graphe connexe il existe $E'\subseteq E$  tel que $G'=(V,E')$ est connexe acyclique\\
+Si il y à un cycle dans $G$ et $e$ appartient à ce cycle alors $G-e$ est connexe\\
+On peu appliquer cette propriété tant qu'il existe un cycle\\
+\newpage
+\THM\\
+Soit $G=(V,E)$, les proposition suivante sont équivalente\\
+\begin{enumerate}
+	\item $G$ est un arbre (minimalement connexe)
+	\item $G$ est connexe et sans cycle
+	\item $G$ est acyclique et $\left|E\right|=\left|V\right|-1$
+	\item $G$ est connexe et $\left|E\right|=\left|V\right|-1$
+	\item $G$ est maximal sans cycle
+	\item pour tout $u\neq v \in V,G$ contient un unique chemin de $u$ à $v$\\
+\end{enumerate}
+
+\Preuve\\
+\textbf{$1)\Rightarrow5) :$} Si on  ajoute $u,v \notin E à G$ , il existe $P$ un chemin de $u$ à $v$ $P+uv$ est donc un cycle $G$ et est maximal sans cycle\\
+\\\textbf{$5)\Rightarrow2) :$} Par contradiction, si $G$ n'est pas connexe , alors il existe $u$ déconnecté de $v$ $G+uv$ est acyclique donc $G$ n'est pas maximal sans cycle\\
+\\\textbf{$2)\Rightarrow3) :$} $\left|V\right|=\left|E\right|+c(G)$ $G$ est connexe $c(G)=1 \Longrightarrow \left|E\right|=\left|V\right|-1$\\
+\\\textbf{$3)\Rightarrow4) :$} $G$ acyclique $\Rightarrow \left|V\right|=\left|E\right|+c(G)$ et $\left|E\right|=\left|V\right|-1 \Rightarrow c(G)=1$\\
+\\\textbf{$4)\Rightarrow6) :$} Soit $G$ connexe et $\left|E\right|=\left|V\right|-1$ On suppose que $u$ et $v$ sont relier par deux chemin . $G'=(V,E')$ un sous graphe acyclique connexe $\left|E'\right|=\left|V\right|-1$ et $\left|E'\right|<\left|E\right|$ D'où contradiction Il reste un unique chemin de $u$ à $v$\\
+\\\textbf{$6)\Rightarrow5) :$}	$G$ est connexe et $G-uv$ est déconnecté car l'arête $uv$ est l'unique chemin de $u$ à $v$\\
+
+\Propo\\
+
+missed something here\\
+
+\Def\\
+Un graphe k régulier est un graphe dont tous les sommets sont de degrès k\\
+$$\sigma(G)=\Delta(G)=k$$
+\newpage
+Caractérisation des graphes bipartis
+
+\Propo\\
+Un graphe G=(V,E) est biparti si et seulement si il n'a pas de cycle de longueur impaire\\
+G sans cycle impair connexe $\Rightarrow$ G biparti
+\section{Euler et Hamilton}
+Une chaîne est un chemin qui peut passer plusieurs fais par un même sommet mais une seule fois par arête\\
+Une chaîne fermer au circuit est une chaîne dont les deux extrémités sont identique\\
+Une chaîne Eulerienne est une chaîne qui passe exactement une fois par chaque arête . Un circuit Eulérien est un circuit qui passe exactement une fois par chaque arête. un graphe est Eulérien si il a un circuit Eulérien\\
+
+\THM\\
+Soit G=(V,E) connexe avec au moin 2 sommets , les 3 propriétés sont équivalentes\\
+\begin{enumerate}
+	\item G est Eulérien
+	\item degrès($v$) est pair pour tout $v \in V$
+	\item il y a un ensemble de cycles C tel que toute arête soit exactement dans un de ces cycles\\
+\end{enumerate}
+\Preuve\\
+\textbf{$i)\Rightarrow ii) :$} soit $W$ un circuit Eulérien soit $v \in V$ chaque occurence de $v$ dans $W$ utilise deux arêtes incitente à $v$ . $v$ est donc de degrès pair\\
+\\\textbf{$ii)\Rightarrow iii) :$} soit $G$ tel que tous ses sommets soit de degrès pair On choisit un sommet $v$ et on construit un chemin maximal à partir de $v,P$. le dernier sommet de $P$ est de degrès $\geq 2$ et donc il est adjacent à un sommet $w$ de $P$. La partie de $P$ de $w$ à $v$ avec l'arête $wv$ forme un cycle $C$ Soit $G-C$ le graphe $G$ auquel on a enlever les arêtes de $C$ le degrès des somets de $G-C$ reste pair par induction on peut décomposer $G-C$ en cycle\\
+\\\textbf{$iii)\Rightarrow i) :$} soit $T$ un circuit maximal contituer d'un ensemble de cycle $C_1,...,C_n$\\
+si il existe un autre cycle de $C$ alors comme $G$ est connexe il existe un cycle de $C$ qui n'est pas dans $T_v$ mais qui partage un sommet $v$ avec $T$. On note $C$ ce cycle\\ $C(vu_1,...,u_kv)$, $T(vw_1,...,w_kv)$ donc  $(vu_1,...,u_kv,vw_1,...,w_kv)$ est un circuit)\\
+ce qui contredit la maximalité de $T$, $T$ contient donc tous les cycles de $C$ et ainsi toutes les arêtes de $G$ . $G$ est Eulérien\\
+
+\end{document}

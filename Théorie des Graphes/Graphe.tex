@@ -252,4 +252,62 @@ Soit G=(V,E) connexe avec au moin 2 sommets , les 3 propriétés sont équivalen
 si il existe un autre cycle de $C$ alors comme $G$ est connexe il existe un cycle de $C$ qui n'est pas dans $T_v$ mais qui partage un sommet $v$ avec $T$. On note $C$ ce cycle\\ $C(vu_1,...,u_kv)$, $T(vw_1,...,w_kv)$ donc  $(vu_1,...,u_kv,vw_1,...,w_kv)$ est un circuit)\\
 ce qui contredit la maximalité de $T$, $T$ contient donc tous les cycles de $C$ et ainsi toutes les arêtes de $G$ . $G$ est Eulérien\\
 
+\section{Combinatoire / Dénombrement}
+\subsection{Règles de base}
+\subsubsection{Règle OU (Union)}
+$$\left|A \cup B\right|=|A|+|B|-|A\cap B|$$
+\subsubsection{Règle Et (Produit)}
+$$\left|A \times B\right|=|A|\times|B|$$
+\subsubsection{Règle Puissance}
+$$\left|A^k\right|=|A|^k$$
+qui correspond à k choix indépendant sur le même ensemble\\
+\subsection{Bijections et fonctions}
+Soit f :$A\rightarrow B$ une bijection alors $|A|=|B|$\\
+\subsubsection{Cardinalité des parties d'un ensemble}
+Soit $S={e_1,e_2,...,e_k}$ , on note $P(S)$ l'ensemble des parties de $S$\\
+$$P(S) = {U|U\subseteq S}$$
+$$X:P(S)->{0,1}^k$$
+$$X(U)=(x_1,x_2,...,x_k) \forall U \subseteq S$$
+avec $x_i=1$ si $e-i \in U$ et $x_i=0$ sinon \\
+$X$ est une bijection\\
+\subsubsection{Règle division}
+Soit $f : A \rightarrow B$ et $k \in \N$\\
+tel que  $\forall y \in B$\\
+$$\left|\left\{x \in A | f(x)=y\right\}\right|=k$$
+alors $|A| =k*|B|$\\
+\subsubsection{Nombre de fonctions}
+$$F(A,B) =\left\{j:A\rightarrow B\right\}$$
+int valeur[52] $A{a_1,...,a_2}$\\
+$$C: F(A,B) B^{|A|}$$
+$$C(j)=\left(j(a_1),...,j(a_k)\right)$$
+C est une bijection\\
+$$\left|F(A,B)\right|=\left|B^{|A|}\right|$$
+$$\left|F(A,B)\right|=\left|B\right|^{|A|}$$
+\subsection{Permutation}
+Une permutaition est une bijection $\sigma : \left\{1,...,n\right\}\rightarrow\left\{1,...,n\right\}$\\
+On peu la représenter comme un tableau contenant les entier de 1 à $n$ tel que $tableau[i]=\sigma(i)$\\
+le nombre de permutation diférente sur $n$ élément est $ n!$\\
+\subsubsection{Arrangements}
+Un arrangement consiste à choisir $k$ éléments ordonnés parmis n\\
+$$f(k): \sigma_n \rightarrow A^k_n$$
+$$f(k)=\left(\sigma_{(1)},...,\sigma_{(n)}\right)=\left(\sigma_{(1)},...,\sigma_{(k)}\right)$$
+$$\forall y \in A^k_n \left|f^{-1}(y)\right|=(n-k)!$$
+$$\left|\sigma_n\right|=(n-k)!\times \left|A^k_n\right|$$
+$$\left|A^k_n\right|=\frac{n!}{(n-k)!}$$
+\subsubsection{Combinaison}
+on note $\left(^n_k\right)$ le nombre de choix de k élément parmis n\\
+$$f: A^k_n$$
+$$\left(a_1,...,a_k\right)\rightarrow\left\{a_1,...,a_k\right\}$$
+$$\left(^n_k\right) \times k!= \left|A^k_n\right|$$
+$$\left(^n_k\right) = \frac{n!}{k! \times (n-k)!}$$
+\subsubsection{Choix sans ordre avec répétition}
+parfums de macaron : vanille , chocolat , fraise , framboise , pistache\\
+00100001000110\\
+2 vanille 4 chocolat 3fraise 0 framboise 1 pistache\\
+choix de n élément parmis k catégorie\\
+$$\left(^{n+k-1}_{k-1}\right)=\left(^{n+k-1}_{n}\right)$$
+
+
+
+
 \end{document}

@@ -307,7 +307,75 @@ parfums de macaron : vanille , chocolat , fraise , framboise , pistache\\
 choix de n élément parmis k catégorie\\
 $$\left(^{n+k-1}_{k-1}\right)=\left(^{n+k-1}_{n}\right)$$
 
+Le nombre de bijections 
+$f.A\rightarrow B$ avec $\left|A\right|=\left|B\right|=n$ est $n!$\\
+$A=\left\{a_1,...,a_n\right\}$\\
+$B=\left\{b_1,...,b_n\right\}$\\
+Soit $\sigma$ une permutation\\
+$f\sigma . A \rightarrow B$\\
+$$f_{\sigma}\left(a_i\right)=b_{\sigma\left(i\right)}$$
+Soit f une bijection et $\sigma : \left[1,n\right]\rightarrow\left[1,n\right]$\\
+$\sigma(i) =j$ avec $j(a_i)=b_j $\\
+alors $\sigma$ est une permutation \\
 
+Soit $F$ : permutations sur $[1,n]\rightarrow$ bijection de $A$ dans $B$\\
+$F\left(\sigma\right)=f\sigma$\\
+le nombre d'injections $f.A\rightarrow B$ avec $\left|A\right|=k et \left|B\right|=n$ est le nombre de chemin d'arrangement $A^n_k=\frac{n!}{(n-k)!}$\\
 
+Soit $\alpha$ un arrangement. $f_{\alpha} A \rightarrow B$\\
+$\alpha \left[1,k\right]\left[1,n\right]$\\
+$A=\left\{a_1,...,a_k\right\}$\\
+$B=\left\{b_1,...,b_n\right\}$\\
+$$f_{\sigma}\left(a_i\right)=b_{\sigma\left(i\right)}$$
+$f_{\sigma}$ est une injection\\
+$F$ arrangements de $k$ élément parmis $n \rightarrow$ injection de $A$ dans $B$\\
+$F(\alpha) = f_{\alpha}$\\
+alors F est une Bijection\\
+Principe de Dirichlet des tiroir et des chaussettes\\
+Pigeon Hole Principe \\
+Soit $f A \rightarrow B$ avec $\left|B\right|<\left|A\right|$\\
+alors il exite $x_1,x_2 \in A$ tel que $f(x_1)=f(x_2)$\\
+Principe généralisé\\
+soit $f A \rightarrow B$ et $k \in \N$ avec $k\left|B\right|<\left|A\right|$\\
+alors il existe $x_1,...,x_{k+1} \in A$ tel que $f(x_1)=f(x_2)=...=f(x_{k+1})$\\
 
+\subsubsection{Union généralisée}
+$$\left|A_1 \cup A_2\right|=\left|A_1\right|+\left|A_2\right|-\left|A_1\cap A_2\right|$$
+
+\section{Coloration et planaritée}
+Soit $G$ un graphe qui représente l'incompatibilité d'éléments entre eux ( des process par exemple )\\
+
+Une coloration propre d'un graphe $G=(V,E)$ est une fonction $F.V\rightarrow C$ (ensemble de couleurs) tel que $uv \in E \Rightarrow f(u) \neq f(v)$\\
+
+Le nombre chromatique $\chi(G)$ du graphe $G$ est le nombre minimum de couleurs nécessaire pour le colorier proprement\\
+
+$$\chi(G)=min\left(\left|f(V)\right|\right)$$
+$B$ coloration propre de $G$\\
+
+\Propo\\
+$\chi(G) \leq 2 \Leftrightarrow G$ est biparti\\
+
+\subsection{Un algorithme glouton pour la colotation de graphe}
+Colorer les sommets au fur et a mesure en utilisant si possible une couleur déja utilisée\\
+
+\Propo\\
+$\chi(G) \leq \Delta(G)+1$\\
+
+\Propo\\
+Si $G$ contient une clique de taile $K$ alors $\chi(G) \geq k $\\
+
+\THM (Brook)\\
+$\chi(G) \leq \Delta(G)$ à moins que $G$ soit une clique ou un cycle de longueur impaire\\
+
+\subsubsection{planarité}
+un graphe est planaire si on peut le dessiner sans que deux arêtes se croisent\
+un face d'une représentation planaire d'un graphe une aire maximal de cette représentation qui ne contient pas de sommets ni d'arêtes\\
+Le graphe dual d'une représentation planaire a pour sommets les faces de cette représentation et deux faces sont adjacentes si elles se touchent
+Soit $F$ l'ensemble des faces de $G=(V,E)$ planaire\\
+
+$$\left|V\right|-\left|E\right|+\left|F\right|=2$$
+Formule d'Euler\\
+
+\Propo\\
+$$\chi \left(G_1\times G_2\right)=max\left(\chi\left(G_1\right),\chi\left(G_2\right)\right)$$
 \end{document}

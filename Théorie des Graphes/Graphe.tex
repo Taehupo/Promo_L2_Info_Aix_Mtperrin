@@ -137,14 +137,14 @@ Donc $G-e$ est connexe\\
 	\label{chemins}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 		\includegraphics{cycles}
 	\caption{On note $C_n$ le cycle de $n$ sommets}
 	\label{cycles}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 		\includegraphics{graphe_biparti}
 	\caption{On note $K_{n,m}$ le graphe biparti complet avec $n$ sommets d'un coté et $m$ de l'autre}
@@ -213,7 +213,7 @@ Soit $G=(V,E)$, les proposition suivante sont équivalente\\
 \end{enumerate}
 
 \Preuve\\
-\textbf{$1)\Rightarrow5) :$} Si on  ajoute $u,v \notin E à G$ , il existe $P$ un chemin de $u$ à $v$ $P+uv$ est donc un cycle $G$ et est maximal sans cycle\\
+\textbf{$1)\Rightarrow5) :$} Si on  ajoute $u,v \notin E a G$ , il existe $P$ un chemin de $u$ à $v$ $P+uv$ est donc un cycle $G$ et est maximal sans cycle\\
 \\\textbf{$5)\Rightarrow2) :$} Par contradiction, si $G$ n'est pas connexe , alors il existe $u$ déconnecté de $v$ $G+uv$ est acyclique donc $G$ n'est pas maximal sans cycle\\
 \\\textbf{$2)\Rightarrow3) :$} $\left|V\right|=\left|E\right|+c(G)$ $G$ est connexe $c(G)=1 \Longrightarrow \left|E\right|=\left|V\right|-1$\\
 \\\textbf{$3)\Rightarrow4) :$} $G$ acyclique $\Rightarrow \left|V\right|=\left|E\right|+c(G)$ et $\left|E\right|=\left|V\right|-1 \Rightarrow c(G)=1$\\
@@ -378,4 +378,40 @@ Formule d'Euler\\
 
 \Propo\\
 $$\chi \left(G_1\times G_2\right)=max\left(\chi\left(G_1\right),\chi\left(G_2\right)\right)$$
+
+
+\section{couplages}
+On a un ensemble d'étudiants que nous souhaitons partitionner en groupe de 2, en respectant les affiniées de ceux-ci\\
+
+\Def\\
+Un couplage est un ensemble d'arêtes qui ne se touchent pas\\
+
+Un sommet est couvert par un couplage si il est extrémité d'une arête de ce couplage\\
+Un couplage est parfait si tous les sommets sont couvert par celui-ci\\
+On note $\nu(G)$ la taille du plus grand couplage de $G$\\
+\subsection{Transversal d'un groupe}
+Un transversal est un ensemble de sommets tel que toute arête de ce graphe soit incidente à au moins un sommet du transversal\\
+On note $\tau(G)$ la taille du plus petit transversal de $G$\\
+
+\Propo\\
+$\nu(G) \leq \tau(G)$\\
+
+\subsection{cas des graphes bipartis}
+\textbf{\THM de König}\\
+Soit G un graphe biparti\\
+$\nu(G) = \tau(G)$\\
+
+\Lemme\\
+Soit $u$ et $c \in D$, $uv \in E$ alors il existe un chemin de longeur paire entre $u$ et $v$\\
+couplage max de $G-v=M_u$\\
+couplage max de $G-u=M_v$\\
+Donc si $u$ et $v \in D$ cela forme un cycle de longueur impaire ce qui n'est pas possible dans un graphe biparti\\
+Toute arêtes d'un graphe biparti a au moin une extémité qui appartient à $C$\\
+Soit $M$ un couplage maximum et $uv \in M$ on suppose sans perte de généralité que  $u \in C$\\
+
+\textbf{\THM de Hall}\\
+Soit $G$ un graphe biparti avec $V=A \cup B $ comme bipartition\\
+alors il existe un couplage couvrant tous les sommets de $A$ si et seulement si $\forall A' \subseteq A$\\
+$A' \leq |N(A')|$ avec $N(A')$ l'ensemble des voisins de $A'$ \\
+
 \end{document}
